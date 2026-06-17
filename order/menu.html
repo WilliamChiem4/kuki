@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Menu — KUKI</title>
+  <meta name="description" content="Build your KUKI box — choose your cookies, pick a pack size, and add warm brown-butter cookies to your order.">
+  <meta name="theme-color" content="#F8F3EA">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../cart.js" defer></script>
+  <script src="../cart-drawer.js" defer></script>
+  <script src="../nav-menu.js" defer></script>
+  <script src="menu.js" defer></script>
+</head>
+<body class="page-menu">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav nav--solid" id="nav">
+    <div class="container nav__inner">
+      <button type="button" class="nav__menu-toggle" id="nav-menu-toggle"
+              aria-label="Open menu" aria-haspopup="true" aria-expanded="false"
+              aria-controls="nav-menu">
+        <span class="nav__menu-icon" aria-hidden="true"></span>
+      </button>
+
+      <a class="nav__brand" href="../index.html" aria-label="KUKI — home">KUKI</a>
+
+      <div class="nav__actions">
+        <a class="btn btn--secondary btn--compact nav__signin" href="../signin.html">
+          Sign In
+        </a>
+        <a class="btn btn--primary btn--compact nav__cta" href="../order.html" id="nav-cta">
+          Order Now
+        </a>
+      </div>
+
+      <nav class="nav__menu" id="nav-menu" aria-label="Primary" hidden>
+        <a href="../signin.html">Sign In</a>
+        <hr class="nav__menu-divider">
+        <a href="../order.html">Start an Order</a>
+        <a href="../index.html#signature">The Cookie</a>
+        <a href="../index.html#story">Our Story</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section menu" aria-labelledby="menu-heading">
+      <div class="container">
+        <div class="section__head section__head--left menu__head">
+          <p class="eyebrow eyebrow--gold">The Menu</p>
+          <h1 class="menu__title" id="menu-heading">Build your box.</h1>
+          <p class="menu__sub">Every cookie is baked to order and delivered warm. Choose a pack size, add it to your box, and check out when you're ready.</p>
+
+          <div class="menu__mode">
+            <div class="mode-toggle" role="radiogroup" aria-label="How would you like your order?">
+              <label class="mode-toggle__opt">
+                <input type="radio" name="fulfilment" value="delivery" checked>
+                <span class="mode-toggle__label">
+                  <svg width="18" height="18" viewBox="0 0 28 28" fill="none" aria-hidden="true"><circle cx="7" cy="20" r="3.2" stroke="currentColor" stroke-width="2"/><circle cx="21" cy="20" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M10.2 20h7.6M21 16.8V8h-3.2M4 11h6.2l3.6 6M4 8h3l1.6 3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Delivery
+                </span>
+              </label>
+              <label class="mode-toggle__opt">
+                <input type="radio" name="fulfilment" value="pickup">
+                <span class="mode-toggle__label">
+                  <svg width="18" height="18" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M5 11.5V23h18V11.5M3.5 6.5h21l1.4 4.6a2.7 2.7 0 0 1-5.4.2 2.7 2.7 0 0 1-5.5 0 2.7 2.7 0 0 1-5.5 0 2.7 2.7 0 0 1-5.4-.2L3.5 6.5ZM11.5 23v-5.5h5V23" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                  Pickup
+                </span>
+              </label>
+            </div>
+            <p class="menu__mode-note" data-mode-note aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="menu-grid">
+          <!-- The Signature -->
+          <article class="menu-card" id="signature">
+            <div class="img-frame img-frame--dark menu-card__img" data-reveal>
+              <img
+                src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=1000&q=80"
+                data-fallback="https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=1000&q=80"
+                alt="A stack of KUKI signature chocolate chip cookies"
+                width="1000" height="688" loading="lazy" decoding="async">
+            </div>
+            <div class="menu-card__body">
+              <p class="eyebrow eyebrow--gold">The Signature</p>
+              <h2 class="menu-card__name">Brown Butter Chocolate Chip</h2>
+              <p class="menu-card__desc">A crisp, caramelized edge giving way to a soft, molten center. Brown butter, 55% dark Belgian chocolate, flaky sea salt.</p>
+              <div class="signature__buy">
+                <fieldset class="pack">
+                  <legend class="visually-hidden">Choose how many</legend>
+                  <div class="pack__options" role="radiogroup" aria-label="How many cookies">
+                    <label class="pack__opt"><input type="radio" name="pack-signature" value="1" data-qty="1" checked><span class="pack__label">Single</span></label>
+                    <label class="pack__opt"><input type="radio" name="pack-signature" value="3" data-qty="3"><span class="pack__label">x3</span></label>
+                    <label class="pack__opt"><input type="radio" name="pack-signature" value="6" data-qty="6"><span class="pack__label">x6</span></label>
+                    <label class="pack__opt"><input type="radio" name="pack-signature" value="12" data-qty="12"><span class="pack__label">x12</span></label>
+                  </div>
+                </fieldset>
+                <p class="signature__price" data-price-for="signature" aria-live="polite"></p>
+                <button class="btn btn--gold btn--add" type="button" data-add-to-cart="signature">
+                  <span class="btn__label">Add to Cart</span>
+                  <span class="btn__added" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3.5 9.5 7 13l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Added
+                  </span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Chocolate Chip + Toffee -->
+          <article class="menu-card" id="toffee">
+            <div class="img-frame img-frame--dark menu-card__img" data-reveal>
+              <img
+                src="https://images.unsplash.com/photo-1590080874088-eec64895b423?auto=format&fit=crop&w=1000&q=80"
+                data-fallback="https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=1000&q=80"
+                alt="A KUKI chocolate chip and toffee cookie, edges studded with toffee shards"
+                width="1000" height="688" loading="lazy" decoding="async">
+            </div>
+            <div class="menu-card__body">
+              <p class="eyebrow eyebrow--gold">Chocolate Chip + Toffee</p>
+              <h2 class="menu-card__name">Toffee Crunch</h2>
+              <p class="menu-card__desc">The Signature reimagined with shards of house-made buttery toffee folded through. Caramelized crunch, the same molten center underneath.</p>
+              <div class="signature__buy">
+                <fieldset class="pack">
+                  <legend class="visually-hidden">Choose how many</legend>
+                  <div class="pack__options" role="radiogroup" aria-label="How many cookies">
+                    <label class="pack__opt"><input type="radio" name="pack-toffee" value="1" data-qty="1" checked><span class="pack__label">Single</span></label>
+                    <label class="pack__opt"><input type="radio" name="pack-toffee" value="3" data-qty="3"><span class="pack__label">x3</span></label>
+                    <label class="pack__opt"><input type="radio" name="pack-toffee" value="6" data-qty="6"><span class="pack__label">x6</span></label>
+                    <label class="pack__opt"><input type="radio" name="pack-toffee" value="12" data-qty="12"><span class="pack__label">x12</span></label>
+                  </div>
+                </fieldset>
+                <p class="signature__price" data-price-for="toffee" aria-live="polite"></p>
+                <button class="btn btn--gold btn--add" type="button" data-add-to-cart="toffee">
+                  <span class="btn__label">Add to Cart</span>
+                  <span class="btn__added" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3.5 9.5 7 13l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Added
+                  </span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Extras -->
+        <div class="menu__extras">
+          <h2 class="menu__extras-title">Make it a moment.</h2>
+          <p class="menu__extras-sub">A few extras worth adding to the box.</p>
+          <div class="menu-addons">
+            <!-- This month's drop -->
+            <div class="addon-card" id="drop">
+              <div class="img-frame addon-card__img">
+                <img
+                  src="https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=400&q=80"
+                  data-fallback="https://images.unsplash.com/photo-1590080874088-eec64895b423?auto=format&fit=crop&w=400&q=80"
+                  alt="Brown butter miso cookie — this month's drop"
+                  width="84" height="84" loading="lazy" decoding="async">
+              </div>
+              <div class="addon-card__info">
+                <div class="addon-card__head">
+                  <h3 class="addon-card__name">Brown Butter Miso</h3>
+                  <span class="addon-card__tag">June Drop</span>
+                </div>
+                <p class="addon-card__blurb">This month only. Salted brown-butter dough, white miso, dark chocolate.</p>
+              </div>
+              <div class="addon-card__end">
+                <p class="addon-card__price" data-price-for="drop"></p>
+                <button class="btn btn--gold btn--compact btn--add" type="button" data-add-to-cart="drop">
+                  <span class="btn__label">Add</span>
+                  <span class="btn__added" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3.5 9.5 7 13l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Added
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Pairing -->
+            <div class="addon-card" id="milk">
+              <div class="img-frame addon-card__img">
+                <img
+                  src="https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=400&q=80"
+                  alt="Cold oat milk in a glass bottle"
+                  width="84" height="84" loading="lazy" decoding="async">
+              </div>
+              <div class="addon-card__info">
+                <div class="addon-card__head">
+                  <h3 class="addon-card__name">Cold Oat Milk</h3>
+                  <span class="addon-card__tag">Pairing</span>
+                </div>
+                <p class="addon-card__blurb">Ice-cold, in a glass bottle. The only correct partner.</p>
+              </div>
+              <div class="addon-card__end">
+                <p class="addon-card__price" data-price-for="milk"></p>
+                <button class="btn btn--gold btn--compact btn--add" type="button" data-add-to-cart="milk">
+                  <span class="btn__label">Add</span>
+                  <span class="btn__added" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3.5 9.5 7 13l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Added
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="footer__wordmark">KUKI</p>
+          <p class="footer__tag">One perfect cookie, delivered warm.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="KUKI on Instagram">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="15" height="15" rx="4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="14.6" cy="5.4" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="#" aria-label="KUKI on TikTok">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12.5 2.5v9.75a3.25 3.25 0 1 1-3.25-3.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12.5 4.5c.5 2 2 3.5 4 3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <nav class="footer__col" aria-label="Shop">
+          <h3>Shop</h3>
+          <a href="menu.html">Menu</a>
+          <a href="../order.html">Order Now</a>
+        </nav>
+        <nav class="footer__col" aria-label="Visit">
+          <h3>Visit</h3>
+          <a href="#">Locations</a>
+          <a href="#">Contact</a>
+        </nav>
+        <nav class="footer__col" aria-label="Company">
+          <h3>Company</h3>
+          <a href="../index.html#story">About</a>
+          <a href="../order.html">Order Now</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 KUKI. Baked with intent.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

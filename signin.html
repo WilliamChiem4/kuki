@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign In — KUKI</title>
+  <meta name="description" content="Sign in to KUKI — we'll text you a confirmation code to get started.">
+  <meta name="theme-color" content="#F8F3EA">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="signin.js" defer></script>
+</head>
+<body class="page-signin">
+  <main class="signin">
+    <section class="signin__panel">
+      <div class="signin__card">
+        <a class="signin__brand" href="index.html" aria-label="KUKI — home">KUKI</a>
+        <h1 class="signin__title">Sign In</h1>
+        <p class="signin__subtitle">We'll text you a confirmation code to get started.</p>
+
+        <hr class="signin__rule">
+
+        <form class="signin__form" id="signin-form" novalidate>
+          <label class="sr-only" for="signin-name">First &amp; Last Name</label>
+          <input class="signin__input" id="signin-name" name="name" type="text"
+                 autocomplete="name" placeholder="First & Last Name"
+                 aria-describedby="signin-feedback">
+
+          <label class="sr-only" for="signin-phone">Mobile Phone Number</label>
+          <input class="signin__input" id="signin-phone" name="phone" type="tel"
+                 inputmode="tel" autocomplete="tel" placeholder="Mobile Phone Number"
+                 aria-describedby="signin-feedback">
+
+          <button class="btn btn--primary signin__submit" type="submit">Send Confirmation Code</button>
+          <p class="signin__feedback" id="signin-feedback" role="status"></p>
+        </form>
+
+        <hr class="signin__rule">
+
+        <p class="signin__fineprint">By proceeding you agree to our <a href="#">Terms and
+          Conditions</a> and confirm you have read and understand our <a href="#">Privacy
+          policy</a>.</p>
+      </div>
+    </section>
+
+    <aside class="signin__art" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1200&q=80"
+           alt="" data-fallback="https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=1200&q=80">
+    </aside>
+  </main>
+</body>
+</html>

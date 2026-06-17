@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order — KUKI</title>
+  <meta name="description" content="Start a KUKI order — choose delivery or pickup for fresh-baked, brown-butter cookies.">
+  <meta name="theme-color" content="#F8F3EA">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="cart.js" defer></script>
+  <script src="cart-drawer.js" defer></script>
+  <script src="nav-menu.js" defer></script>
+  <script src="order.js" defer></script>
+</head>
+<body class="page-order">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav nav--solid" id="nav">
+    <div class="container nav__inner">
+      <button type="button" class="nav__menu-toggle" id="nav-menu-toggle"
+              aria-label="Open menu" aria-haspopup="true" aria-expanded="false"
+              aria-controls="nav-menu">
+        <span class="nav__menu-icon" aria-hidden="true"></span>
+      </button>
+
+      <a class="nav__brand" href="index.html" aria-label="KUKI — home">KUKI</a>
+
+      <div class="nav__actions">
+        <a class="btn btn--secondary btn--compact nav__signin" href="signin.html">
+          Sign In
+        </a>
+        <a class="btn btn--primary btn--compact nav__cta" href="order.html" id="nav-cta">
+          Order Now
+        </a>
+      </div>
+
+      <nav class="nav__menu" id="nav-menu" aria-label="Primary" hidden>
+        <a href="signin.html">Sign In</a>
+        <hr class="nav__menu-divider">
+        <a href="index.html#why">Why KUKI</a>
+        <a href="index.html#signature">The Cookie</a>
+        <a href="index.html#how">How It Works</a>
+        <a href="index.html#reviews">Reviews</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section order" aria-labelledby="order-heading">
+      <div class="container">
+        <div class="section__head section__head--left order__head">
+          <p class="eyebrow eyebrow--gold">Start here</p>
+          <h1 class="order__title" id="order-heading">Start an Order</h1>
+        </div>
+
+        <div class="order-grid">
+          <a class="order-card order-card--primary" href="order/menu.html" data-order-mode="delivery">
+            <span class="order-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 28 28" fill="none">
+                <circle cx="7" cy="20" r="3.2" stroke="currentColor" stroke-width="1.75"/>
+                <circle cx="21" cy="20" r="3.2" stroke="currentColor" stroke-width="1.75"/>
+                <path d="M10.2 20h7.6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                <path d="M21 16.8V8h-3.2" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 11h6.2l3.6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 8h3l1.6 3.2" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="order-card__label">Delivery</span>
+          </a>
+
+          <a class="order-card order-card--primary" href="order/menu.html" data-order-mode="pickup">
+            <span class="order-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 28 28" fill="none">
+                <path d="M5 11.5V23h18V11.5" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+                <path d="M3.5 6.5h21l1.4 4.6a2.7 2.7 0 0 1-5.4.2 2.7 2.7 0 0 1-5.5 0 2.7 2.7 0 0 1-5.5 0 2.7 2.7 0 0 1-5.4-.2L3.5 6.5Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+                <path d="M11.5 23v-5.5h5V23" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="order-card__label">Pickup</span>
+          </a>
+
+          <a class="order-card order-card--secondary" href="#" aria-disabled="true">
+            <span class="order-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 28 28" fill="none">
+                <rect x="3.5" y="6.5" width="21" height="15" rx="2.5" stroke="currentColor" stroke-width="1.75"/>
+                <path d="M3.5 11h21" stroke="currentColor" stroke-width="1.75"/>
+                <path d="M7 16.5h5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="order-card__label">Digital Gift Cards</span>
+            <span class="order-card__note">Coming soon</span>
+          </a>
+
+          <a class="order-card order-card--secondary" href="#" aria-disabled="true">
+            <span class="order-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 28 28" fill="none">
+                <path d="M4 19a10 10 0 0 1 20 0" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 19h22" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                <path d="M14 9V6.6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                <circle cx="14" cy="5.4" r="1.3" stroke="currentColor" stroke-width="1.75"/>
+              </svg>
+            </span>
+            <span class="order-card__label">Catering</span>
+            <span class="order-card__note">Coming soon</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="footer__wordmark">KUKI</p>
+          <p class="footer__tag">One perfect cookie, delivered warm.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="KUKI on Instagram">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="15" height="15" rx="4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="14.6" cy="5.4" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="#" aria-label="KUKI on TikTok">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12.5 2.5v9.75a3.25 3.25 0 1 1-3.25-3.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12.5 4.5c.5 2 2 3.5 4 3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <nav class="footer__col" aria-label="Shop">
+          <h3>Shop</h3>
+          <a href="order/menu.html">Menu</a>
+          <a href="order.html">Order Now</a>
+        </nav>
+        <nav class="footer__col" aria-label="Visit">
+          <h3>Visit</h3>
+          <a href="#">Locations</a>
+          <a href="#">Contact</a>
+        </nav>
+        <nav class="footer__col" aria-label="Company">
+          <h3>Company</h3>
+          <a href="index.html#story">About</a>
+          <a href="index.html#reviews">Reviews</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 KUKI. Baked with intent.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

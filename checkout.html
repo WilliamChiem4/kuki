@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout — KUKI</title>
+  <meta name="description" content="Review your KUKI order — fresh-baked, brown-butter cookies, delivered warm.">
+  <meta name="theme-color" content="#F8F3EA">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="cart.js" defer></script>
+  <script src="cart-drawer.js" defer></script>
+  <script src="nav-menu.js" defer></script>
+  <script src="checkout.js" defer></script>
+</head>
+<body class="page-checkout">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav nav--solid" id="nav">
+    <div class="container nav__inner">
+      <button type="button" class="nav__menu-toggle" id="nav-menu-toggle"
+              aria-label="Open menu" aria-haspopup="true" aria-expanded="false"
+              aria-controls="nav-menu">
+        <span class="nav__menu-icon" aria-hidden="true"></span>
+      </button>
+
+      <a class="nav__brand" href="index.html" aria-label="KUKI — home">KUKI</a>
+
+      <div class="nav__actions">
+        <a class="btn btn--secondary btn--compact nav__signin" href="signin.html">
+          Sign In
+        </a>
+        <a class="btn btn--primary btn--compact nav__cta" href="order.html" id="nav-cta">
+          Order Now
+        </a>
+      </div>
+
+      <nav class="nav__menu" id="nav-menu" aria-label="Primary" hidden>
+        <a href="signin.html">Sign In</a>
+        <hr class="nav__menu-divider">
+        <a href="index.html#why">Why KUKI</a>
+        <a href="index.html#signature">The Cookie</a>
+        <a href="index.html#how">How It Works</a>
+        <a href="index.html#reviews">Reviews</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section checkout" aria-labelledby="checkout-heading">
+      <div class="container">
+        <div class="checkout__head">
+          <p class="eyebrow eyebrow--gold">Your order</p>
+          <h1 id="checkout-heading">Review your box.</h1>
+          <p class="checkout__sub">Baked to order the moment you proceed — warm at your door, not off a shelf.</p>
+        </div>
+
+        <div class="checkout__grid">
+          <!-- LEFT: line items + add-ons -->
+          <div class="checkout__main">
+            <div class="checkout__list" id="checkout-list" aria-label="Items in your order"></div>
+
+            <section class="addon-row" id="addon-row" aria-labelledby="addon-heading" hidden>
+              <div class="addon-row__head">
+                <h2 id="addon-heading">Make it a moment</h2>
+                <p>App-exclusive this month — gone when the batch runs out.</p>
+              </div>
+              <div class="addon-row__track" id="addon-track"></div>
+            </section>
+          </div>
+
+          <!-- RIGHT: sticky order summary -->
+          <aside class="summary" id="summary" aria-labelledby="summary-heading">
+            <h2 class="summary__title" id="summary-heading">Order summary</h2>
+
+            <div class="fulfilment-toggle" role="radiogroup" aria-label="Fulfilment method">
+              <button type="button" class="fulfilment-toggle__opt is-active" data-mode="delivery" role="radio" aria-checked="true">Delivery</button>
+              <button type="button" class="fulfilment-toggle__opt" data-mode="pickup" role="radio" aria-checked="false">Pickup</button>
+            </div>
+            <p class="summary__eta" id="eta-text"></p>
+
+            <div class="delivery-bar-mount" id="delivery-bar-mount"></div>
+
+            <dl class="summary__rows">
+              <div class="summary__row"><dt>Subtotal</dt><dd id="sum-subtotal">0 ₫</dd></div>
+              <div class="summary__row" id="row-discount" hidden><dt id="discount-label">Discount</dt><dd id="sum-discount">−0 ₫</dd></div>
+              <div class="summary__row"><dt id="delivery-label">Delivery</dt><dd id="sum-delivery">0 ₫</dd></div>
+              <div class="summary__row"><dt>Tax</dt><dd id="sum-tax">0 ₫</dd></div>
+              <div class="summary__row summary__row--total"><dt>Total</dt><dd id="sum-total" aria-live="polite">0 ₫</dd></div>
+            </dl>
+
+            <form class="promo" id="promo-form" novalidate>
+              <label class="promo__label" for="promo-input">Promo or Dough code</label>
+              <div class="promo__field">
+                <input class="promo__input" id="promo-input" type="text" inputmode="text" autocomplete="off" placeholder="e.g. WARM10" aria-describedby="promo-feedback">
+                <button class="btn btn--secondary btn--compact promo__apply" type="submit">Apply</button>
+              </div>
+              <p class="promo__feedback" id="promo-feedback" role="status"></p>
+            </form>
+
+            <p class="earn-dough" id="earn-dough" hidden></p>
+
+            <div class="checkout-actions">
+              <a class="btn btn--secondary" href="order/menu.html">← Back to menu</a>
+              <button class="btn btn--gold" type="button" id="proceed-btn">
+                Proceed
+                <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <p class="summary__secure">🔒 Secure checkout · no card stored</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Confirmation (revealed after Proceed) -->
+    <section class="confirm" id="confirm" hidden aria-labelledby="confirm-heading" aria-live="polite">
+      <div class="container confirm__inner">
+        <div class="confirm__badge" aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M5 12.5 10 17l9-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="eyebrow eyebrow--gold">Order placed</p>
+        <h2 id="confirm-heading">Your batch is going in the oven 🍪</h2>
+        <p class="confirm__sub" id="confirm-sub">Fresh-baked now — <strong id="confirm-eta">warm at your door soon</strong>.</p>
+        <dl class="confirm__meta">
+          <div><dt>Order total</dt><dd id="confirm-total">0 ₫</dd></div>
+          <div><dt>Dough earned</dt><dd id="confirm-dough">0</dd></div>
+        </dl>
+        <a class="btn btn--gold" href="index.html">Back to home</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Mobile sticky checkout bar -->
+  <div class="checkout-bar" id="checkout-bar" hidden>
+    <div class="checkout-bar__info">
+      <span class="checkout-bar__label">Total</span>
+      <span class="checkout-bar__total" id="bar-total">0 ₫</span>
+    </div>
+    <button class="btn btn--gold" type="button" id="bar-proceed">Proceed</button>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="footer__wordmark">KUKI</p>
+          <p class="footer__tag">One perfect cookie, delivered warm.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="KUKI on Instagram">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="15" height="15" rx="4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="14.6" cy="5.4" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="#" aria-label="KUKI on TikTok">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12.5 2.5v9.75a3.25 3.25 0 1 1-3.25-3.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12.5 4.5c.5 2 2 3.5 4 3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <nav class="footer__col" aria-label="Shop">
+          <h3>Shop</h3>
+          <a href="order/menu.html">Menu</a>
+          <a href="checkout.html">Your order</a>
+        </nav>
+        <nav class="footer__col" aria-label="Visit">
+          <h3>Visit</h3>
+          <a href="#">Locations</a>
+          <a href="#">Contact</a>
+        </nav>
+        <nav class="footer__col" aria-label="Company">
+          <h3>Company</h3>
+          <a href="index.html#story">About</a>
+          <a href="index.html#reviews">Reviews</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 KUKI. Baked with intent.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
