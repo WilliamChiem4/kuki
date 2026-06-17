@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="title.cookieToffee">Toffee Crunch — KUKI</title>
+  <meta name="description" content="KUKI Toffee Crunch — the Signature reimagined with shards of house-made buttery toffee folded through. Caramelized crunch, molten center, delivered warm.">
+  <meta name="theme-color" content="#F8F3EA">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../i18n.js" defer></script>
+  <script src="../cart.js" defer></script>
+  <script src="../cart-drawer.js" defer></script>
+  <script src="../nav-menu.js" defer></script>
+  <script src="cookie.js" defer></script>
+</head>
+<body class="page-cookie">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+  <header class="nav nav--solid" id="nav">
+    <div class="container nav__inner">
+      <button type="button" class="nav__menu-toggle" id="nav-menu-toggle"
+              aria-label="Open menu" data-i18n-attr="aria-label:a11y.openMenu"
+              aria-haspopup="true" aria-expanded="false"
+              aria-controls="nav-menu">
+        <span class="nav__menu-icon" aria-hidden="true"></span>
+      </button>
+
+      <a class="nav__brand" href="../index.html" aria-label="KUKI — home" data-i18n-attr="aria-label:a11y.homeBrand">KUKI</a>
+
+      <div class="nav__actions">
+        <a class="btn btn--secondary btn--compact nav__signin" href="../signin.html" data-i18n="nav.signin">
+          Sign In
+        </a>
+        <a class="btn btn--primary btn--compact nav__cta" href="../order.html" id="nav-cta" data-i18n="nav.order">
+          Order Now
+        </a>
+      </div>
+
+      <nav class="nav__menu" id="nav-menu" aria-label="Primary" hidden>
+        <a href="../index.html" data-i18n="nav.home">Home</a>
+        <a href="../order.html" data-i18n="nav.orderItem">Order</a>
+        <span class="nav__menu-soon" aria-disabled="true">
+          <span data-i18n="nav.catering">Catering</span>
+          <span class="nav__menu-tag" data-i18n="nav.soon">Coming soon</span>
+        </span>
+        <span class="nav__menu-soon" aria-disabled="true">
+          <span data-i18n="nav.giftcards">Gift Cards</span>
+          <span class="nav__menu-tag" data-i18n="nav.soon">Coming soon</span>
+        </span>
+        <hr class="nav__menu-divider">
+        <a href="../signin.html" data-i18n="nav.signin">Sign In</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Cookie hero -->
+    <section class="section section--dark signature cookie cookie-detail" id="toffee" style="--cookie-bg:#3A2233" aria-labelledby="cookie-heading">
+      <div class="container">
+        <a class="cookie-detail__back" href="../order/menu.html">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="cookiepg.back">Menu</span>
+        </a>
+
+        <div class="signature__grid">
+          <div class="img-frame img-frame--dark signature__img">
+            <img
+              src="https://images.unsplash.com/photo-1590080874088-eec64895b423?auto=format&fit=crop&w=1000&q=80"
+              data-fallback="https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=1000&q=80"
+              alt="A KUKI chocolate chip and toffee cookie, edges studded with toffee shards"
+              width="1000" height="1000" decoding="async">
+          </div>
+          <div class="signature__copy">
+            <p class="eyebrow eyebrow--gold" data-i18n="toffee.eyebrow">Chocolate Chip + Toffee</p>
+            <h1 class="cookie-detail__name" id="cookie-heading" data-i18n="menu.toffeeName">Toffee Crunch</h1>
+            <p class="signature__desc" data-i18n="toffee.desc">The Signature, reimagined with shards of buttery toffee folded through. Caramelized crunch in every bite, the same molten center underneath.</p>
+            <ul class="checklist">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5 7 13l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span data-i18n="toffee.check1">House-made buttery toffee</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5 7 13l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span data-i18n="sig.check2">55% dark Belgian chocolate</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5 7 13l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span data-i18n="toffee.check3">Brown butter base</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5 7 13l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span data-i18n="sig.check3">Flaky sea salt finish</span>
+              </li>
+            </ul>
+
+            <div class="signature__buy cookie-detail__buy">
+              <fieldset class="pack">
+                <legend class="visually-hidden" data-i18n="pack.legend">Choose how many</legend>
+                <div class="pack__options" role="radiogroup" aria-label="How many cookies" data-i18n-attr="aria-label:menu.qtyAria">
+                  <label class="pack__opt"><input type="radio" name="pack-toffee" value="1" data-qty="1" checked><span class="pack__label" data-i18n="pack.single">Single</span></label>
+                  <label class="pack__opt"><input type="radio" name="pack-toffee" value="3" data-qty="3"><span class="pack__label">x3</span></label>
+                  <label class="pack__opt"><input type="radio" name="pack-toffee" value="6" data-qty="6"><span class="pack__label">x6</span></label>
+                  <label class="pack__opt"><input type="radio" name="pack-toffee" value="12" data-qty="12"><span class="pack__label">x12</span></label>
+                </div>
+              </fieldset>
+              <p class="signature__price" data-price-for="toffee" aria-live="polite"></p>
+              <button class="btn btn--gold btn--add" type="button" data-add-to-cart="toffee">
+                <span class="btn__label" data-i18n="cart.add">Add to Cart</span>
+                <span class="btn__added" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3.5 9.5 7 13l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span data-i18n="cart.added">Added</span>
+                </span>
+              </button>
+            </div>
+
+            <p class="cookie-detail__more">
+              <a class="btn btn--ghost" href="../order/menu.html" data-i18n="cookiepg.viewMenu">View full menu</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inside every batch -->
+    <section class="section" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow eyebrow--gold" data-i18n="why.eyebrow">Why KUKI</p>
+          <h2 id="why-heading" data-i18n="why.heading">Obsessed with the details that matter.</h2>
+        </div>
+        <div class="pillars">
+          <article class="pillar">
+            <span class="pillar__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 28 28" fill="none"><path d="M14 4C9 9 7 12 7 16a7 7 0 0 0 14 0c0-4-2-7-7-12Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg>
+            </span>
+            <h3 data-i18n="why.p1.title">Brown Butter</h3>
+            <p data-i18n="why.p1.body">Every batch starts with butter browned slowly until it's deep, nutty, and toffee-sweet. It changes everything.</p>
+          </article>
+          <article class="pillar">
+            <span class="pillar__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 28 28" fill="none"><rect x="5" y="5" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.75"/><path d="M5 11h18M5 17h18M11 5v18M17 5v18" stroke="currentColor" stroke-width="1.5"/></svg>
+            </span>
+            <h3 data-i18n="why.p2.title">Premium Chocolate</h3>
+            <p data-i18n="why.p2.body">Hand-chopped 55% dark Belgian chocolate — never chips — so every bite pulls into ribbons of real melt.</p>
+          </article>
+          <article class="pillar">
+            <span class="pillar__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="9" stroke="currentColor" stroke-width="1.75"/><path d="M14 9v5l3.5 2.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h3 data-i18n="why.p3.title">Baked Fresh Daily</h3>
+            <p data-i18n="why.p3.body">Nothing sits on a shelf. Your order goes into the oven after you place it and out the door within hours.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cross-sell CTA -->
+    <section class="section section--dark final-cta" aria-labelledby="crave-heading">
+      <div class="container final-cta__inner">
+        <p class="eyebrow eyebrow--gold" data-i18n="cookiepg.craveEyebrow">Still hungry?</p>
+        <h2 id="crave-heading" data-i18n="cookiepg.craveHeading">Two cookies. One obsession.</h2>
+        <p data-i18n="cookiepg.craveBody">Add the other one to your box — or build a mixed dozen.</p>
+        <div class="final-cta__actions">
+          <a class="btn btn--gold" href="../order.html">
+            <span data-i18n="nav.order">Order Now</span>
+            <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="signature.html" data-i18n="cookiepg.toSignature">Meet the Signature</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="footer__wordmark">KUKI</p>
+          <p class="footer__tag" data-i18n="footer.tag">One perfect cookie, delivered warm.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="KUKI on Instagram" data-i18n-attr="aria-label:a11y.instagram">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="15" height="15" rx="4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="14.6" cy="5.4" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="#" aria-label="KUKI on TikTok" data-i18n-attr="aria-label:a11y.tiktok">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12.5 2.5v9.75a3.25 3.25 0 1 1-3.25-3.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12.5 4.5c.5 2 2 3.5 4 3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <nav class="footer__col" aria-label="Shop">
+          <h3 data-i18n="footer.shop">Shop</h3>
+          <a href="../order/menu.html" data-i18n="footer.menu">Menu</a>
+          <a href="../order.html" data-i18n="footer.order">Order Now</a>
+        </nav>
+        <nav class="footer__col" aria-label="Visit">
+          <h3 data-i18n="footer.visit">Visit</h3>
+          <a href="#" data-i18n="footer.locations">Locations</a>
+          <a href="#" data-i18n="footer.contact">Contact</a>
+        </nav>
+        <nav class="footer__col" aria-label="Company">
+          <h3 data-i18n="footer.company">Company</h3>
+          <a href="../index.html#story" data-i18n="footer.about">About</a>
+          <a href="../order.html" data-i18n="footer.order">Order Now</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p data-i18n="footer.copyright">© 2026 KUKI. Baked with intent.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

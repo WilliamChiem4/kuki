@@ -127,6 +127,23 @@
   const vndFormatter = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND', maximumFractionDigits: 0 });
   const formatPrice = (vnd) => vndFormatter.format(Math.round(vnd));
 
+  /* ---- i18n bridge -----------------------------------------
+     Translate a key through KukiI18n when it's loaded, else fall back to
+     the English default. The marketing page doesn't load i18n+cart, so
+     this stays a safe no-op there. */
+  const tr = (key, fallback) => (window.KukiI18n ? window.KukiI18n.t(key, null, fallback) : fallback);
+
+  /* Return a copy of a catalog product with its display strings localized.
+     Prices, ids, images, flags are untouched. */
+  function localize(product) {
+    return {
+      ...product,
+      name: tr('product.' + product.id + '.name', product.name),
+      variant: product.variant ? tr('product.' + product.id + '.variant', product.variant) : product.variant,
+      blurb: product.blurb ? tr('product.' + product.id + '.blurb', product.blurb) : product.blurb,
+    };
+  }
+
   /* ---- Cart mutations -------------------------------------- */
   function add(id, qty = 1) {
     if (!CATALOG[id]) return;
@@ -170,7 +187,7 @@
     return state.items
       .filter((it) => CATALOG[it.id])
       .map((it) => {
-        const product = CATALOG[it.id];
+        const product = localize(CATALOG[it.id]);
         return { ...product, qty: it.qty, lineTotal: product.price * it.qty };
       });
   }
@@ -208,7 +225,7 @@
       total,
       mode,
       promo: state.promo,
-      promoLabel: promo ? promo.label : null,
+      promoLabel: promo ? tr('promo.' + state.promo, promo.label) : null,
       freeShip: !!(promo && promo.freeShip) || (mode === 'delivery' && sub >= CONFIG.freeDeliveryOver),
       freeDeliveryRemaining: mode === 'pickup' ? 0 : Math.max(0, CONFIG.freeDeliveryOver - sub),
       freeDeliveryOver: CONFIG.freeDeliveryOver,
@@ -236,7 +253,7 @@
     applyPromo,
     clearPromo,
     formatPrice,
-    addonItems: () => Object.values(CATALOG).filter((p) => p.addon),
+    addonItems: () => Object.values(CATALOG).filter((p) => p.addon).map(localize),
     subscribe(fn) { subscribers.add(fn); return () => subscribers.delete(fn); },
   };
 })();

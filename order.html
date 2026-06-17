@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Order — KUKI</title>
+  <title data-i18n="title.order">Order — KUKI</title>
   <meta name="description" content="Start a KUKI order — choose delivery or pickup for fresh-baked, brown-butter cookies.">
   <meta name="theme-color" content="#F8F3EA">
 
@@ -13,40 +13,48 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
+  <script src="i18n.js" defer></script>
   <script src="cart.js" defer></script>
   <script src="cart-drawer.js" defer></script>
   <script src="nav-menu.js" defer></script>
   <script src="order.js" defer></script>
 </head>
 <body class="page-order">
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 
   <header class="nav nav--solid" id="nav">
     <div class="container nav__inner">
       <button type="button" class="nav__menu-toggle" id="nav-menu-toggle"
-              aria-label="Open menu" aria-haspopup="true" aria-expanded="false"
+              aria-label="Open menu" data-i18n-attr="aria-label:a11y.openMenu"
+              aria-haspopup="true" aria-expanded="false"
               aria-controls="nav-menu">
         <span class="nav__menu-icon" aria-hidden="true"></span>
       </button>
 
-      <a class="nav__brand" href="index.html" aria-label="KUKI — home">KUKI</a>
+      <a class="nav__brand" href="index.html" aria-label="KUKI — home" data-i18n-attr="aria-label:a11y.homeBrand">KUKI</a>
 
       <div class="nav__actions">
-        <a class="btn btn--secondary btn--compact nav__signin" href="signin.html">
+        <a class="btn btn--secondary btn--compact nav__signin" href="signin.html" data-i18n="nav.signin">
           Sign In
         </a>
-        <a class="btn btn--primary btn--compact nav__cta" href="order.html" id="nav-cta">
+        <a class="btn btn--primary btn--compact nav__cta" href="order.html" id="nav-cta" data-i18n="nav.order">
           Order Now
         </a>
       </div>
 
       <nav class="nav__menu" id="nav-menu" aria-label="Primary" hidden>
-        <a href="signin.html">Sign In</a>
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="order.html" data-i18n="nav.orderItem">Order</a>
+        <span class="nav__menu-soon" aria-disabled="true">
+          <span data-i18n="nav.catering">Catering</span>
+          <span class="nav__menu-tag" data-i18n="nav.soon">Coming soon</span>
+        </span>
+        <span class="nav__menu-soon" aria-disabled="true">
+          <span data-i18n="nav.giftcards">Gift Cards</span>
+          <span class="nav__menu-tag" data-i18n="nav.soon">Coming soon</span>
+        </span>
         <hr class="nav__menu-divider">
-        <a href="index.html#why">Why KUKI</a>
-        <a href="index.html#signature">The Cookie</a>
-        <a href="index.html#how">How It Works</a>
-        <a href="index.html#reviews">Reviews</a>
+        <a href="signin.html" data-i18n="nav.signin">Sign In</a>
       </nav>
     </div>
   </header>
@@ -55,8 +63,8 @@
     <section class="section order" aria-labelledby="order-heading">
       <div class="container">
         <div class="section__head section__head--left order__head">
-          <p class="eyebrow eyebrow--gold">Start here</p>
-          <h1 class="order__title" id="order-heading">Start an Order</h1>
+          <p class="eyebrow eyebrow--gold" data-i18n="order.eyebrow">Start here</p>
+          <h1 class="order__title" id="order-heading" data-i18n="order.title">Start an Order</h1>
         </div>
 
         <div class="order-grid">
@@ -71,7 +79,7 @@
                 <path d="M4 8h3l1.6 3.2" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </span>
-            <span class="order-card__label">Delivery</span>
+            <span class="order-card__label" data-i18n="order.delivery">Delivery</span>
           </a>
 
           <a class="order-card order-card--primary" href="order/menu.html" data-order-mode="pickup">
@@ -82,7 +90,7 @@
                 <path d="M11.5 23v-5.5h5V23" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
               </svg>
             </span>
-            <span class="order-card__label">Pickup</span>
+            <span class="order-card__label" data-i18n="order.pickup">Pickup</span>
           </a>
 
           <a class="order-card order-card--secondary" href="#" aria-disabled="true">
@@ -93,8 +101,8 @@
                 <path d="M7 16.5h5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
               </svg>
             </span>
-            <span class="order-card__label">Digital Gift Cards</span>
-            <span class="order-card__note">Coming soon</span>
+            <span class="order-card__label" data-i18n="order.giftcards">Digital Gift Cards</span>
+            <span class="order-card__note" data-i18n="order.comingSoon">Coming soon</span>
           </a>
 
           <a class="order-card order-card--secondary" href="#" aria-disabled="true">
@@ -106,8 +114,8 @@
                 <circle cx="14" cy="5.4" r="1.3" stroke="currentColor" stroke-width="1.75"/>
               </svg>
             </span>
-            <span class="order-card__label">Catering</span>
-            <span class="order-card__note">Coming soon</span>
+            <span class="order-card__label" data-i18n="order.catering">Catering</span>
+            <span class="order-card__note" data-i18n="order.comingSoon">Coming soon</span>
           </a>
         </div>
       </div>
@@ -119,34 +127,34 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <p class="footer__wordmark">KUKI</p>
-          <p class="footer__tag">One perfect cookie, delivered warm.</p>
+          <p class="footer__tag" data-i18n="footer.tag">One perfect cookie, delivered warm.</p>
           <div class="footer__social">
-            <a href="#" aria-label="KUKI on Instagram">
+            <a href="#" aria-label="KUKI on Instagram" data-i18n-attr="aria-label:a11y.instagram">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="15" height="15" rx="4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="14.6" cy="5.4" r="1" fill="currentColor"/></svg>
             </a>
-            <a href="#" aria-label="KUKI on TikTok">
+            <a href="#" aria-label="KUKI on TikTok" data-i18n-attr="aria-label:a11y.tiktok">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12.5 2.5v9.75a3.25 3.25 0 1 1-3.25-3.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12.5 4.5c.5 2 2 3.5 4 3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </a>
           </div>
         </div>
         <nav class="footer__col" aria-label="Shop">
-          <h3>Shop</h3>
-          <a href="order/menu.html">Menu</a>
-          <a href="order.html">Order Now</a>
+          <h3 data-i18n="footer.shop">Shop</h3>
+          <a href="order/menu.html" data-i18n="footer.menu">Menu</a>
+          <a href="order.html" data-i18n="footer.order">Order Now</a>
         </nav>
         <nav class="footer__col" aria-label="Visit">
-          <h3>Visit</h3>
-          <a href="#">Locations</a>
-          <a href="#">Contact</a>
+          <h3 data-i18n="footer.visit">Visit</h3>
+          <a href="#" data-i18n="footer.locations">Locations</a>
+          <a href="#" data-i18n="footer.contact">Contact</a>
         </nav>
         <nav class="footer__col" aria-label="Company">
-          <h3>Company</h3>
-          <a href="index.html#story">About</a>
-          <a href="index.html#reviews">Reviews</a>
+          <h3 data-i18n="footer.company">Company</h3>
+          <a href="index.html#story" data-i18n="footer.about">About</a>
+          <a href="index.html#reviews" data-i18n="footer.reviews">Reviews</a>
         </nav>
       </div>
       <div class="footer__bottom">
-        <p>© 2026 KUKI. Baked with intent.</p>
+        <p data-i18n="footer.copyright">© 2026 KUKI. Baked with intent.</p>
       </div>
     </div>
   </footer>

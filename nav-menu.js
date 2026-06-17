@@ -14,6 +14,8 @@
   if (!toggle || !menu) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Translate via KukiI18n when present (it loads before this script).
+  const tr = (k) => (window.KukiI18n ? window.KukiI18n.t(k) : k);
 
   const CLOSE_ICON =
     '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">' +
@@ -34,7 +36,8 @@
   const closeBtn = document.createElement('button');
   closeBtn.type = 'button';
   closeBtn.className = 'nav__menu__close';
-  closeBtn.setAttribute('aria-label', 'Close menu');
+  closeBtn.setAttribute('aria-label', tr('a11y.closeMenu'));
+  closeBtn.setAttribute('data-i18n-attr', 'aria-label:a11y.closeMenu');
   closeBtn.innerHTML = CLOSE_ICON;
   menu.insertBefore(closeBtn, menu.firstChild);
 
@@ -52,7 +55,7 @@
     menu.classList.add('is-open');
     backdrop.classList.add('is-open');
     toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Close menu');
+    toggle.setAttribute('aria-label', tr('a11y.closeMenu'));
     document.body.classList.add('nav-menu-open');
     document.addEventListener('keydown', onKeydown, true);
     closeBtn.focus();
@@ -64,7 +67,7 @@
     menu.classList.remove('is-open');
     backdrop.classList.remove('is-open');
     toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open menu');
+    toggle.setAttribute('aria-label', tr('a11y.openMenu'));
     document.body.classList.remove('nav-menu-open');
     document.removeEventListener('keydown', onKeydown, true);
     const hide = () => { menu.hidden = true; backdrop.hidden = true; };

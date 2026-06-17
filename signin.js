@@ -12,6 +12,9 @@
   var phoneInput = document.getElementById('signin-phone');
   var submitBtn = form.querySelector('.signin__submit');
 
+  // Translate via KukiI18n when present (it loads before this script).
+  function tr(key, vars) { return window.KukiI18n ? window.KukiI18n.t(key, vars) : key; }
+
   function setFeedback(message, state) {
     feedback.textContent = message;
     feedback.className = 'signin__feedback' + (state ? ' is-' + state : '');
@@ -28,21 +31,20 @@
     var phoneDigits = digits(phoneInput.value);
 
     if (!name) {
-      setFeedback('Please enter your first and last name.', 'err');
+      setFeedback(tr('signin.errName'), 'err');
       nameInput.focus();
       return;
     }
     if (phoneDigits.length < 10) {
-      setFeedback('Please enter a valid mobile phone number.', 'err');
+      setFeedback(tr('signin.errPhone'), 'err');
       phoneInput.focus();
       return;
     }
 
-    setFeedback('Confirmation code sent to ' + phoneInput.value.trim() +
-      '. (Demo — no SMS is actually sent.)', 'ok');
+    setFeedback(tr('signin.codeSent', { phone: phoneInput.value.trim() }), 'ok');
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Code Sent';
+      submitBtn.textContent = tr('signin.sent');
     }
   });
 

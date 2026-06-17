@@ -38,11 +38,17 @@
     'a11y.instagram':  { en: 'KUKI on Instagram', vi: 'KUKI trên Instagram' },
     'a11y.tiktok':     { en: 'KUKI on TikTok', vi: 'KUKI trên TikTok' },
     'a11y.openMenu':   { en: 'Open menu', vi: 'Mở menu' },
+    'a11y.closeMenu':  { en: 'Close menu', vi: 'Đóng menu' },
     'a11y.fiveStars':  { en: '5 out of 5 stars', vi: '5 trên 5 sao' },
 
     /* --- Nav --- */
     'nav.signin':  { en: 'Sign In', vi: 'Đăng Nhập' },
     'nav.order':   { en: 'Order Now', vi: 'Đặt Hàng' },
+    'nav.home':      { en: 'Home', vi: 'Trang Chủ' },
+    'nav.orderItem': { en: 'Order', vi: 'Đặt Hàng' },
+    'nav.catering':  { en: 'Catering', vi: 'Đặt Tiệc' },
+    'nav.giftcards': { en: 'Gift Cards', vi: 'Thẻ Quà Tặng' },
+    'nav.soon':      { en: 'Coming soon', vi: 'Sắp ra mắt' },
     'nav.why':     { en: 'Why KUKI', vi: 'Vì Sao KUKI' },
     'nav.cookie':  { en: 'The Cookie', vi: 'Chiếc Bánh' },
     'nav.how':     { en: 'How It Works', vi: 'Cách Hoạt Động' },
@@ -101,6 +107,17 @@
     'toffee.check1':  { en: 'House-made buttery toffee', vi: 'Kẹo bơ tự làm' },
     'toffee.check3':  { en: 'Brown butter base', vi: 'Nền bơ nâu' },
 
+    /* --- Cookie detail pages --- */
+    'title.cookieSig':       { en: 'Brown Butter Chocolate Chip — KUKI', vi: 'Sô-cô-la Chip Bơ Nâu — KUKI' },
+    'title.cookieToffee':    { en: 'Toffee Crunch — KUKI', vi: 'Kẹo Bơ Giòn — KUKI' },
+    'cookiepg.back':         { en: 'Menu', vi: 'Thực Đơn' },
+    'cookiepg.viewMenu':     { en: 'View full menu', vi: 'Xem toàn bộ thực đơn' },
+    'cookiepg.craveEyebrow': { en: 'Still hungry?', vi: 'Vẫn còn thèm?' },
+    'cookiepg.craveHeading': { en: 'Two cookies. One obsession.', vi: 'Hai chiếc bánh. Một niềm đam mê.' },
+    'cookiepg.craveBody':    { en: 'Add the other one to your box — or build a mixed dozen.', vi: 'Thêm chiếc còn lại vào hộp — hoặc tạo một tá pha trộn.' },
+    'cookiepg.toToffee':     { en: 'Meet the Toffee Crunch', vi: 'Khám phá Kẹo Bơ Giòn' },
+    'cookiepg.toSignature':  { en: 'Meet the Signature', vi: 'Khám phá Bánh Đặc Trưng' },
+
     /* --- Pack selector / add to cart (HTML + script.js) --- */
     'pack.legend': { en: 'Choose how many', vi: 'Chọn số lượng' },
     'pack.single': { en: 'Single', vi: 'Đơn' },
@@ -142,6 +159,7 @@
     /* --- Final CTA --- */
     'cta.heading': { en: 'One more cookie<span class="final-cta__dot">.</span>', vi: 'Thêm một chiếc bánh<span class="final-cta__dot">.</span>' },
     'cta.sub':     { en: 'Baked when you order. Warm when it arrives.', vi: 'Nướng khi bạn đặt. Ấm khi đến nơi.' },
+    'cta.learnMore': { en: 'Learn More', vi: 'Tìm Hiểu Thêm' },
 
     /* --- Order page --- */
     'order.eyebrow':    { en: 'Start here', vi: 'Bắt đầu tại đây' },
@@ -151,6 +169,22 @@
     'order.giftcards':  { en: 'Digital Gift Cards', vi: 'Thẻ Quà Tặng Điện Tử' },
     'order.catering':   { en: 'Catering', vi: 'Đặt Tiệc' },
     'order.comingSoon': { en: 'Coming soon', vi: 'Sắp ra mắt' },
+
+    /* --- Menu page (order/menu.html) --- */
+    'title.menu':       { en: 'The Menu — KUKI', vi: 'Thực Đơn — KUKI' },
+    'menu.eyebrow':     { en: 'The Menu', vi: 'Thực Đơn' },
+    'menu.heading':     { en: 'Build your box.', vi: 'Tạo hộp của bạn.' },
+    'menu.sub':         { en: "Every cookie is baked to order and delivered warm. Choose a pack size, add it to your box, and check out when you're ready.", vi: 'Mỗi chiếc bánh được nướng theo đơn và giao đến khi còn ấm. Chọn kích cỡ gói, thêm vào hộp, và thanh toán khi bạn sẵn sàng.' },
+    'menu.modeAria':    { en: 'How would you like your order?', vi: 'Bạn muốn nhận đơn như thế nào?' },
+    'menu.qtyAria':     { en: 'How many cookies', vi: 'Số lượng bánh' },
+    'menu.noteDelivery':{ en: 'Delivered warm. Free delivery on orders over {amount}.', vi: 'Giao đến khi còn ấm. Miễn phí giao cho đơn trên {amount}.' },
+    'menu.notePickup':  { en: 'Ready warm at our studio — no delivery fee.', vi: 'Sẵn sàng còn ấm tại xưởng của chúng tôi — không phí giao hàng.' },
+    'menu.sigName':     { en: 'Brown Butter Chocolate Chip', vi: 'Sô-cô-la Chip Bơ Nâu' },
+    'menu.sigDesc':     { en: 'A crisp, caramelized edge giving way to a soft, molten center. Brown butter, 55% dark Belgian chocolate, flaky sea salt.', vi: 'Viền giòn caramel hóa nhường chỗ cho phần nhân mềm tan chảy. Bơ nâu, sô-cô-la đen Bỉ 55%, muối biển hạt.' },
+    'menu.toffeeName':  { en: 'Toffee Crunch', vi: 'Kẹo Bơ Giòn' },
+    'menu.toffeeDesc':  { en: 'The Signature reimagined with shards of house-made buttery toffee folded through. Caramelized crunch, the same molten center underneath.', vi: 'Bánh Đặc Trưng được tái tạo với những mảnh kẹo bơ tự làm xen kẽ. Độ giòn caramel, vẫn phần nhân tan chảy bên dưới.' },
+    'menu.extrasTitle': { en: 'Make it a moment.', vi: 'Biến nó thành khoảnh khắc.' },
+    'menu.extrasSub':   { en: 'A few extras worth adding to the box.', vi: 'Vài món thêm đáng để cho vào hộp.' },
 
     /* --- Sign In page --- */
     'signin.title':     { en: 'Sign In', vi: 'Đăng Nhập' },
@@ -260,10 +294,17 @@
     try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* storage off */ }
   }
 
-  /* ---- Translate -------------------------------------------- */
-  function t(key, vars) {
+  /* ---- Translate --------------------------------------------
+     t(key)                  → translated string (or the key if unknown)
+     t(key, vars)            → with {placeholder} interpolation
+     t(key, vars, fallback)  → use `fallback` when the key is unknown,
+                               so callers can pass an English default
+                               (e.g. catalog data) without leaking keys. */
+  function t(key, vars, fallback) {
     const entry = DICT[key];
-    let s = entry ? (entry[lang] != null ? entry[lang] : entry.en) : key;
+    let s = entry
+      ? (entry[lang] != null ? entry[lang] : entry.en)
+      : (fallback != null ? fallback : key);
     if (vars) {
       s = s.replace(/\{(\w+)\}/g, (m, k) => (vars[k] != null ? String(vars[k]) : m));
     }

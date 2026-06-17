@@ -9,6 +9,8 @@
 
   const Cart = window.KukiCart;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Translate via KukiI18n when present (it loads before this script).
+  const tr = (k, vars) => (window.KukiI18n ? window.KukiI18n.t(k, vars) : k);
 
   /* ---- Inline icons ---------------------------------------- */
   const ICON = {
@@ -35,7 +37,8 @@
     cartBtn.type = 'button';
     cartBtn.className = 'nav__cart';
     cartBtn.id = 'cart-button';
-    cartBtn.setAttribute('aria-label', 'Open your cart');
+    cartBtn.setAttribute('aria-label', tr('drawer.openCart'));
+    cartBtn.setAttribute('data-i18n-attr', 'aria-label:drawer.openCart');
     cartBtn.setAttribute('aria-haspopup', 'dialog');
     cartBtn.innerHTML =
       ICON.bag +
@@ -53,10 +56,10 @@
   drawer.hidden = true;
   drawer.innerHTML =
     '<div class="cart-drawer__backdrop" data-close></div>' +
-    '<aside class="cart-drawer__panel" role="dialog" aria-modal="true" aria-label="Your cart" tabindex="-1">' +
+    '<aside class="cart-drawer__panel" role="dialog" aria-modal="true" aria-label="' + esc(tr('drawer.ariaCart')) + '" data-i18n-attr="aria-label:drawer.ariaCart" tabindex="-1">' +
       '<header class="cart-drawer__head">' +
-        '<h2 class="cart-drawer__title">Your box</h2>' +
-        '<button type="button" class="cart-drawer__close" data-close aria-label="Close cart">' + ICON.close + '</button>' +
+        '<h2 class="cart-drawer__title" data-i18n="drawer.title">' + esc(tr('drawer.title')) + '</h2>' +
+        '<button type="button" class="cart-drawer__close" data-close aria-label="' + esc(tr('drawer.closeCart')) + '" data-i18n-attr="aria-label:drawer.closeCart">' + ICON.close + '</button>' +
       '</header>' +
       '<div class="cart-drawer__body"></div>' +
       '<footer class="cart-drawer__foot" hidden></footer>' +
@@ -150,15 +153,15 @@
 
   function deliveryBarHTML(t) {
     if (t.mode === 'pickup') {
-      return `<div class="delivery-bar delivery-bar--done"><p class="delivery-bar__text">Pickup — ready warm, no delivery fee.</p></div>`;
+      return `<div class="delivery-bar delivery-bar--done"><p class="delivery-bar__text">${tr('co.barPickupDrawer')}</p></div>`;
     }
     if (t.freeDeliveryRemaining <= 0) {
-      return `<div class="delivery-bar delivery-bar--done"><p class="delivery-bar__text">You’ve unlocked free delivery 🎉</p><div class="delivery-bar__track"><span class="delivery-bar__fill" style="width:100%"></span></div></div>`;
+      return `<div class="delivery-bar delivery-bar--done"><p class="delivery-bar__text">${tr('co.barUnlocked')}</p><div class="delivery-bar__track"><span class="delivery-bar__fill" style="width:100%"></span></div></div>`;
     }
     const pct = Math.min(100, Math.round((t.subtotal / t.freeDeliveryOver) * 100));
     return (
       `<div class="delivery-bar">` +
-        `<p class="delivery-bar__text">Add <strong>${Cart.formatPrice(t.freeDeliveryRemaining)}</strong> more for free delivery</p>` +
+        `<p class="delivery-bar__text">${tr('co.barProgress', { amount: Cart.formatPrice(t.freeDeliveryRemaining) })}</p>` +
         `<div class="delivery-bar__track"><span class="delivery-bar__fill" style="width:${pct}%"></span></div>` +
       `</div>`
     );
@@ -170,9 +173,9 @@
       bodyEl.innerHTML =
         `<div class="cart-empty cart-empty--drawer">` +
           `<div class="cart-empty__icon">${ICON.bag}</div>` +
-          `<p class="cart-empty__title">Your box is empty</p>` +
-          `<p class="cart-empty__sub">Warm, brown-butter cookies are one tap away.</p>` +
-          `<a class="btn btn--primary" href="/order/menu.html">Browse the menu</a>` +
+          `<p class="cart-empty__title">${tr('drawer.empty')}</p>` +
+          `<p class="cart-empty__sub">${tr('drawer.emptySub')}</p>` +
+          `<a class="btn btn--primary" href="/order/menu.html">${tr('drawer.browse')}</a>` +
         `</div>`;
       footEl.hidden = true;
       return;
@@ -182,9 +185,9 @@
     footEl.hidden = false;
     footEl.innerHTML =
       deliveryBarHTML(t) +
-      `<div class="cart-drawer__subtotal"><span>Subtotal</span><span>${Cart.formatPrice(t.subtotal)}</span></div>` +
-      `<a class="btn btn--gold cart-drawer__checkout" href="checkout.html">Checkout · ${Cart.formatPrice(t.subtotal)}</a>` +
-      `<p class="cart-drawer__note">Taxes & delivery calculated at checkout.</p>`;
+      `<div class="cart-drawer__subtotal"><span>${tr('checkout.subtotal')}</span><span>${Cart.formatPrice(t.subtotal)}</span></div>` +
+      `<a class="btn btn--gold cart-drawer__checkout" href="/checkout.html">${tr('drawer.checkout', { price: Cart.formatPrice(t.subtotal) })}</a>` +
+      `<p class="cart-drawer__note">${tr('drawer.note')}</p>`;
   }
 
   /* ---- Nav badge ------------------------------------------- */
@@ -202,7 +205,7 @@
       }
     }
     const live = document.getElementById('cart-live');
-    if (live) live.textContent = `${n} item${n === 1 ? '' : 's'} in cart`;
+    if (live) live.textContent = tr('drawer.itemsInCart', { n });
     prevCount = n;
   }
 
@@ -212,6 +215,16 @@
     if (isOpen) renderDrawer();
   });
   renderBadge();
+
+  // Re-render dynamic content when the language changes. (KukiI18n.setLang
+  // has already re-applied data-i18n attrs on the static drawer chrome and
+  // cart button by the time this fires.)
+  if (window.KukiI18n) {
+    window.KukiI18n.onChange(() => {
+      renderBadge();
+      if (isOpen) renderDrawer();
+    });
+  }
 
   // Let other scripts open the drawer (e.g. "view cart" affordances).
   window.KukiCartDrawer = { open: openDrawer, close: closeDrawer };

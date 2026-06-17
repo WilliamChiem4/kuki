@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sign In — KUKI</title>
+  <title data-i18n="title.signin">Sign In — KUKI</title>
   <meta name="description" content="Sign in to KUKI — we'll text you a confirmation code to get started.">
   <meta name="theme-color" content="#F8F3EA">
 
@@ -13,36 +13,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
+  <script src="i18n.js" defer></script>
   <script src="signin.js" defer></script>
 </head>
 <body class="page-signin">
   <main class="signin">
     <section class="signin__panel">
       <div class="signin__card">
-        <a class="signin__brand" href="index.html" aria-label="KUKI — home">KUKI</a>
-        <h1 class="signin__title">Sign In</h1>
-        <p class="signin__subtitle">We'll text you a confirmation code to get started.</p>
+        <a class="signin__brand" href="index.html" aria-label="KUKI — home" data-i18n-attr="aria-label:a11y.homeBrand">KUKI</a>
+        <h1 class="signin__title" data-i18n="signin.title">Sign In</h1>
+        <p class="signin__subtitle" data-i18n="signin.subtitle">We'll text you a confirmation code to get started.</p>
 
         <hr class="signin__rule">
 
         <form class="signin__form" id="signin-form" novalidate>
-          <label class="sr-only" for="signin-name">First &amp; Last Name</label>
+          <label class="sr-only" for="signin-name" data-i18n="signin.name">First &amp; Last Name</label>
           <input class="signin__input" id="signin-name" name="name" type="text"
                  autocomplete="name" placeholder="First & Last Name"
+                 data-i18n-attr="placeholder:signin.name"
                  aria-describedby="signin-feedback">
 
-          <label class="sr-only" for="signin-phone">Mobile Phone Number</label>
+          <label class="sr-only" for="signin-phone" data-i18n="signin.phone">Mobile Phone Number</label>
           <input class="signin__input" id="signin-phone" name="phone" type="tel"
                  inputmode="tel" autocomplete="tel" placeholder="Mobile Phone Number"
+                 data-i18n-attr="placeholder:signin.phone"
                  aria-describedby="signin-feedback">
 
-          <button class="btn btn--primary signin__submit" type="submit">Send Confirmation Code</button>
+          <button class="btn btn--primary signin__submit" type="submit" data-i18n="signin.submit">Send Confirmation Code</button>
           <p class="signin__feedback" id="signin-feedback" role="status"></p>
         </form>
 
         <hr class="signin__rule">
 
-        <p class="signin__fineprint">By proceeding you agree to our <a href="#">Terms and
+        <p class="signin__fineprint" data-i18n-html="signin.fineprint">By proceeding you agree to our <a href="#">Terms and
           Conditions</a> and confirm you have read and understand our <a href="#">Privacy
           policy</a>.</p>
       </div>

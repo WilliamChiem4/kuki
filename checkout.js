@@ -11,6 +11,8 @@
   const fmt = Cart.formatPrice;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (sel) => document.querySelector(sel);
+  // Translate via KukiI18n when present (it loads before this script).
+  const tr = (k, vars) => (window.KukiI18n ? window.KukiI18n.t(k, vars) : k);
 
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => (
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
@@ -51,8 +53,8 @@
   }
   function etaPhrase(mode) {
     return mode === 'pickup'
-      ? `Ready for pickup by ~${clockIn(20)}`
-      : `Warm at your door by ~${clockIn(45)}`;
+      ? tr('co.etaPickup', { time: clockIn(20) })
+      : tr('co.etaDelivery', { time: clockIn(45) });
   }
 
   /* ---- Line items ------------------------------------------ */
@@ -63,8 +65,8 @@
         `<div class="cart-item__info">` +
           `<p class="cart-item__name">${esc(l.name)}${l.tag ? ` <span class="cart-item__tag">${esc(l.tag)}</span>` : ''}</p>` +
           `<p class="cart-item__variant">${esc(l.variant || '')}</p>` +
-          `<p class="cart-item__unit">${fmt(l.price)} each</p>` +
-          `<button type="button" class="cart-item__remove cart-item__remove--text" data-action="remove" data-id="${l.id}">${ICON.trash}<span>Remove</span></button>` +
+          `<p class="cart-item__unit">${tr('co.each', { price: fmt(l.price) })}</p>` +
+          `<button type="button" class="cart-item__remove cart-item__remove--text" data-action="remove" data-id="${l.id}">${ICON.trash}<span>${tr('co.remove')}</span></button>` +
         `</div>` +
         `<div class="cart-item__controls">` +
           `<div class="qty" role="group" aria-label="Quantity for ${esc(l.name)}">` +
@@ -78,15 +80,18 @@
     );
   }
 
-  const emptyHTML =
-    `<div class="cart-empty">` +
-      `<div class="cart-empty__icon">` +
-        `<svg width="30" height="30" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 6.5h10l-.8 9.2a1.5 1.5 0 0 1-1.5 1.3H7.3a1.5 1.5 0 0 1-1.5-1.3L5 6.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7.3 6.5a2.7 2.7 0 0 1 5.4 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>` +
-      `</div>` +
-      `<p class="cart-empty__title">Your box is empty</p>` +
-      `<p class="cart-empty__sub">Warm, brown-butter cookies are one tap away.</p>` +
-      `<a class="btn btn--primary" href="index.html#signature">Browse the menu</a>` +
-    `</div>`;
+  function emptyHTML() {
+    return (
+      `<div class="cart-empty">` +
+        `<div class="cart-empty__icon">` +
+          `<svg width="30" height="30" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 6.5h10l-.8 9.2a1.5 1.5 0 0 1-1.5 1.3H7.3a1.5 1.5 0 0 1-1.5-1.3L5 6.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7.3 6.5a2.7 2.7 0 0 1 5.4 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>` +
+        `</div>` +
+        `<p class="cart-empty__title">${tr('drawer.empty')}</p>` +
+        `<p class="cart-empty__sub">${tr('drawer.emptySub')}</p>` +
+        `<a class="btn btn--primary" href="index.html#signature">${tr('drawer.browse')}</a>` +
+      `</div>`
+    );
+  }
 
   /* ---- Add-on row (static — rendered once) ----------------- */
   function renderAddons() {
@@ -100,7 +105,7 @@
           `<p class="addon-card__blurb">${esc(a.blurb || a.variant || '')}</p>` +
           `<div class="addon-card__foot">` +
             `<span class="addon-card__price">${fmt(a.price)}</span>` +
-            `<button type="button" class="btn btn--secondary btn--compact" data-action="add-addon" data-id="${a.id}">Add</button>` +
+            `<button type="button" class="btn btn--secondary btn--compact" data-action="add-addon" data-id="${a.id}">${tr('co.add')}</button>` +
           `</div>` +
         `</div>` +
       `</article>`
@@ -111,15 +116,15 @@
   /* ---- Delivery progress bar ------------------------------- */
   function deliveryBarHTML(t) {
     if (t.mode === 'pickup') {
-      return `<div class="delivery-bar delivery-bar--done"><p class="delivery-bar__text">Pickup selected — no delivery fee.</p></div>`;
+      return `<div class="delivery-bar delivery-bar--done"><p class="delivery-bar__text">${tr('co.barPickupCheckout')}</p></div>`;
     }
     if (t.freeDeliveryRemaining <= 0) {
-      return `<div class="delivery-bar delivery-bar--done"><p class="delivery-bar__text">You’ve unlocked free delivery 🎉</p><div class="delivery-bar__track"><span class="delivery-bar__fill" style="width:100%"></span></div></div>`;
+      return `<div class="delivery-bar delivery-bar--done"><p class="delivery-bar__text">${tr('co.barUnlocked')}</p><div class="delivery-bar__track"><span class="delivery-bar__fill" style="width:100%"></span></div></div>`;
     }
     const pct = Math.min(100, Math.round((t.subtotal / t.freeDeliveryOver) * 100));
     return (
       `<div class="delivery-bar">` +
-        `<p class="delivery-bar__text">Add <strong>${fmt(t.freeDeliveryRemaining)}</strong> more for free delivery</p>` +
+        `<p class="delivery-bar__text">${tr('co.barProgress', { amount: fmt(t.freeDeliveryRemaining) })}</p>` +
         `<div class="delivery-bar__track"><span class="delivery-bar__fill" style="width:${pct}%"></span></div>` +
       `</div>`
     );
@@ -131,13 +136,13 @@
     if (applied) {
       const label = Cart.totals().promoLabel;
       promoFeedback.className = 'promo__feedback is-ok';
-      promoFeedback.innerHTML = `Applied <strong>${esc(applied)}</strong> — ${esc(label)}. <button type="button" class="promo__remove" data-action="clear-promo">Remove</button>`;
+      promoFeedback.innerHTML = tr('co.promoApplied', { code: esc(applied), label: esc(label) });
     } else if (pendingPromoMsg) {
       promoFeedback.className = 'promo__feedback is-err';
       promoFeedback.textContent = pendingPromoMsg;
     } else {
       promoFeedback.className = 'promo__feedback';
-      promoFeedback.textContent = 'Try WARM10, FREESHIP, or DOUGH5.';
+      promoFeedback.textContent = tr('co.promoTry');
     }
   }
 
@@ -156,14 +161,14 @@
 
     const deliveryDd = $('#sum-delivery');
     if (t.mode === 'pickup') deliveryDd.textContent = '—';
-    else if (t.delivery === 0) deliveryDd.textContent = 'Free';
+    else if (t.delivery === 0) deliveryDd.textContent = tr('co.free');
     else deliveryDd.textContent = fmt(t.delivery);
-    $('#delivery-label').textContent = t.mode === 'pickup' ? 'Pickup' : 'Delivery';
+    $('#delivery-label').textContent = t.mode === 'pickup' ? tr('co.pickup') : tr('co.delivery');
 
     const discountRow = $('#row-discount');
     if (t.discount > 0) {
       discountRow.hidden = false;
-      $('#discount-label').textContent = t.promoLabel ? `Discount (${t.promo})` : 'Discount';
+      $('#discount-label').textContent = t.promoLabel ? tr('co.discountCode', { code: t.promo }) : tr('checkout.discount');
       $('#sum-discount').textContent = '−' + fmt(t.discount);
     } else {
       discountRow.hidden = true;
@@ -184,7 +189,7 @@
     const earn = $('#earn-dough');
     if (hasItems && t.doughEarned > 0) {
       earn.hidden = false;
-      earn.innerHTML = `You’ll earn <strong>${t.doughEarned}</strong> Dough on this order.`;
+      earn.innerHTML = tr('co.earnDough', { n: t.doughEarned });
     } else {
       earn.hidden = true;
     }
@@ -235,7 +240,7 @@
       pendingPromoMsg = null;
       promoInput.value = '';
     } else {
-      pendingPromoMsg = `“${code}” isn’t a valid code.`;
+      pendingPromoMsg = tr('co.promoInvalid', { code });
       render();
     }
   });
@@ -282,4 +287,10 @@
   renderAddons();
   Cart.subscribe(render);
   render();
+
+  // Re-render in the new language when the toggle flips. (Static labels with
+  // data-i18n are already handled by KukiI18n.setLang's apply pass.)
+  if (window.KukiI18n) {
+    window.KukiI18n.onChange(() => { renderAddons(); render(); });
+  }
 })();

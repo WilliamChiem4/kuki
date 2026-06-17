@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Menu — KUKI</title>
+  <title data-i18n="title.menu">The Menu — KUKI</title>
   <meta name="description" content="Build your KUKI box — choose your cookies, pick a pack size, and add warm brown-butter cookies to your order.">
   <meta name="theme-color" content="#F8F3EA">
 
@@ -13,39 +13,48 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../styles.css">
+  <script src="../i18n.js" defer></script>
   <script src="../cart.js" defer></script>
   <script src="../cart-drawer.js" defer></script>
   <script src="../nav-menu.js" defer></script>
   <script src="menu.js" defer></script>
 </head>
 <body class="page-menu">
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 
   <header class="nav nav--solid" id="nav">
     <div class="container nav__inner">
       <button type="button" class="nav__menu-toggle" id="nav-menu-toggle"
-              aria-label="Open menu" aria-haspopup="true" aria-expanded="false"
+              aria-label="Open menu" data-i18n-attr="aria-label:a11y.openMenu"
+              aria-haspopup="true" aria-expanded="false"
               aria-controls="nav-menu">
         <span class="nav__menu-icon" aria-hidden="true"></span>
       </button>
 
-      <a class="nav__brand" href="../index.html" aria-label="KUKI — home">KUKI</a>
+      <a class="nav__brand" href="../index.html" aria-label="KUKI — home" data-i18n-attr="aria-label:a11y.homeBrand">KUKI</a>
 
       <div class="nav__actions">
-        <a class="btn btn--secondary btn--compact nav__signin" href="../signin.html">
+        <a class="btn btn--secondary btn--compact nav__signin" href="../signin.html" data-i18n="nav.signin">
           Sign In
         </a>
-        <a class="btn btn--primary btn--compact nav__cta" href="../order.html" id="nav-cta">
+        <a class="btn btn--primary btn--compact nav__cta" href="../order.html" id="nav-cta" data-i18n="nav.order">
           Order Now
         </a>
       </div>
 
       <nav class="nav__menu" id="nav-menu" aria-label="Primary" hidden>
-        <a href="../signin.html">Sign In</a>
+        <a href="../index.html" data-i18n="nav.home">Home</a>
+        <a href="../order.html" data-i18n="nav.orderItem">Order</a>
+        <span class="nav__menu-soon" aria-disabled="true">
+          <span data-i18n="nav.catering">Catering</span>
+          <span class="nav__menu-tag" data-i18n="nav.soon">Coming soon</span>
+        </span>
+        <span class="nav__menu-soon" aria-disabled="true">
+          <span data-i18n="nav.giftcards">Gift Cards</span>
+          <span class="nav__menu-tag" data-i18n="nav.soon">Coming soon</span>
+        </span>
         <hr class="nav__menu-divider">
-        <a href="../order.html">Start an Order</a>
-        <a href="../index.html#signature">The Cookie</a>
-        <a href="../index.html#story">Our Story</a>
+        <a href="../signin.html" data-i18n="nav.signin">Sign In</a>
       </nav>
     </div>
   </header>
@@ -54,24 +63,24 @@
     <section class="section menu" aria-labelledby="menu-heading">
       <div class="container">
         <div class="section__head section__head--left menu__head">
-          <p class="eyebrow eyebrow--gold">The Menu</p>
-          <h1 class="menu__title" id="menu-heading">Build your box.</h1>
-          <p class="menu__sub">Every cookie is baked to order and delivered warm. Choose a pack size, add it to your box, and check out when you're ready.</p>
+          <p class="eyebrow eyebrow--gold" data-i18n="menu.eyebrow">The Menu</p>
+          <h1 class="menu__title" id="menu-heading" data-i18n="menu.heading">Build your box.</h1>
+          <p class="menu__sub" data-i18n="menu.sub">Every cookie is baked to order and delivered warm. Choose a pack size, add it to your box, and check out when you're ready.</p>
 
           <div class="menu__mode">
-            <div class="mode-toggle" role="radiogroup" aria-label="How would you like your order?">
+            <div class="mode-toggle" role="radiogroup" aria-label="How would you like your order?" data-i18n-attr="aria-label:menu.modeAria">
               <label class="mode-toggle__opt">
                 <input type="radio" name="fulfilment" value="delivery" checked>
                 <span class="mode-toggle__label">
                   <svg width="18" height="18" viewBox="0 0 28 28" fill="none" aria-hidden="true"><circle cx="7" cy="20" r="3.2" stroke="currentColor" stroke-width="2"/><circle cx="21" cy="20" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M10.2 20h7.6M21 16.8V8h-3.2M4 11h6.2l3.6 6M4 8h3l1.6 3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Delivery
+                  <span data-i18n="order.delivery">Delivery</span>
                 </span>
               </label>
               <label class="mode-toggle__opt">
                 <input type="radio" name="fulfilment" value="pickup">
                 <span class="mode-toggle__label">
                   <svg width="18" height="18" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M5 11.5V23h18V11.5M3.5 6.5h21l1.4 4.6a2.7 2.7 0 0 1-5.4.2 2.7 2.7 0 0 1-5.5 0 2.7 2.7 0 0 1-5.5 0 2.7 2.7 0 0 1-5.4-.2L3.5 6.5ZM11.5 23v-5.5h5V23" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-                  Pickup
+                  <span data-i18n="order.pickup">Pickup</span>
                 </span>
               </label>
             </div>
@@ -90,14 +99,14 @@
                 width="1000" height="688" loading="lazy" decoding="async">
             </div>
             <div class="menu-card__body">
-              <p class="eyebrow eyebrow--gold">The Signature</p>
-              <h2 class="menu-card__name">Brown Butter Chocolate Chip</h2>
-              <p class="menu-card__desc">A crisp, caramelized edge giving way to a soft, molten center. Brown butter, 55% dark Belgian chocolate, flaky sea salt.</p>
+              <p class="eyebrow eyebrow--gold" data-i18n="sig.eyebrow">The Signature</p>
+              <h2 class="menu-card__name" data-i18n="menu.sigName">Brown Butter Chocolate Chip</h2>
+              <p class="menu-card__desc" data-i18n="menu.sigDesc">A crisp, caramelized edge giving way to a soft, molten center. Brown butter, 55% dark Belgian chocolate, flaky sea salt.</p>
               <div class="signature__buy">
                 <fieldset class="pack">
-                  <legend class="visually-hidden">Choose how many</legend>
-                  <div class="pack__options" role="radiogroup" aria-label="How many cookies">
-                    <label class="pack__opt"><input type="radio" name="pack-signature" value="1" data-qty="1" checked><span class="pack__label">Single</span></label>
+                  <legend class="visually-hidden" data-i18n="pack.legend">Choose how many</legend>
+                  <div class="pack__options" role="radiogroup" aria-label="How many cookies" data-i18n-attr="aria-label:menu.qtyAria">
+                    <label class="pack__opt"><input type="radio" name="pack-signature" value="1" data-qty="1" checked><span class="pack__label" data-i18n="pack.single">Single</span></label>
                     <label class="pack__opt"><input type="radio" name="pack-signature" value="3" data-qty="3"><span class="pack__label">x3</span></label>
                     <label class="pack__opt"><input type="radio" name="pack-signature" value="6" data-qty="6"><span class="pack__label">x6</span></label>
                     <label class="pack__opt"><input type="radio" name="pack-signature" value="12" data-qty="12"><span class="pack__label">x12</span></label>
@@ -108,7 +117,7 @@
                   <span class="btn__label">Add to Cart</span>
                   <span class="btn__added" aria-hidden="true">
                     <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3.5 9.5 7 13l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    Added
+                    <span data-i18n="cart.added">Added</span>
                   </span>
                 </button>
               </div>
@@ -125,14 +134,14 @@
                 width="1000" height="688" loading="lazy" decoding="async">
             </div>
             <div class="menu-card__body">
-              <p class="eyebrow eyebrow--gold">Chocolate Chip + Toffee</p>
-              <h2 class="menu-card__name">Toffee Crunch</h2>
-              <p class="menu-card__desc">The Signature reimagined with shards of house-made buttery toffee folded through. Caramelized crunch, the same molten center underneath.</p>
+              <p class="eyebrow eyebrow--gold" data-i18n="toffee.eyebrow">Chocolate Chip + Toffee</p>
+              <h2 class="menu-card__name" data-i18n="menu.toffeeName">Toffee Crunch</h2>
+              <p class="menu-card__desc" data-i18n="menu.toffeeDesc">The Signature reimagined with shards of house-made buttery toffee folded through. Caramelized crunch, the same molten center underneath.</p>
               <div class="signature__buy">
                 <fieldset class="pack">
-                  <legend class="visually-hidden">Choose how many</legend>
-                  <div class="pack__options" role="radiogroup" aria-label="How many cookies">
-                    <label class="pack__opt"><input type="radio" name="pack-toffee" value="1" data-qty="1" checked><span class="pack__label">Single</span></label>
+                  <legend class="visually-hidden" data-i18n="pack.legend">Choose how many</legend>
+                  <div class="pack__options" role="radiogroup" aria-label="How many cookies" data-i18n-attr="aria-label:menu.qtyAria">
+                    <label class="pack__opt"><input type="radio" name="pack-toffee" value="1" data-qty="1" checked><span class="pack__label" data-i18n="pack.single">Single</span></label>
                     <label class="pack__opt"><input type="radio" name="pack-toffee" value="3" data-qty="3"><span class="pack__label">x3</span></label>
                     <label class="pack__opt"><input type="radio" name="pack-toffee" value="6" data-qty="6"><span class="pack__label">x6</span></label>
                     <label class="pack__opt"><input type="radio" name="pack-toffee" value="12" data-qty="12"><span class="pack__label">x12</span></label>
@@ -143,7 +152,7 @@
                   <span class="btn__label">Add to Cart</span>
                   <span class="btn__added" aria-hidden="true">
                     <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3.5 9.5 7 13l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    Added
+                    <span data-i18n="cart.added">Added</span>
                   </span>
                 </button>
               </div>
@@ -153,59 +162,59 @@
 
         <!-- Extras -->
         <div class="menu__extras">
-          <h2 class="menu__extras-title">Make it a moment.</h2>
-          <p class="menu__extras-sub">A few extras worth adding to the box.</p>
+          <h2 class="menu__extras-title" data-i18n="menu.extrasTitle">Make it a moment.</h2>
+          <p class="menu__extras-sub" data-i18n="menu.extrasSub">A few extras worth adding to the box.</p>
           <div class="menu-addons">
             <!-- This month's drop -->
-            <div class="addon-card" id="drop">
-              <div class="img-frame addon-card__img">
+            <div class="menu-addon" id="drop">
+              <div class="img-frame menu-addon__img">
                 <img
                   src="https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=400&q=80"
                   data-fallback="https://images.unsplash.com/photo-1590080874088-eec64895b423?auto=format&fit=crop&w=400&q=80"
                   alt="Brown butter miso cookie — this month's drop"
                   width="84" height="84" loading="lazy" decoding="async">
               </div>
-              <div class="addon-card__info">
-                <div class="addon-card__head">
-                  <h3 class="addon-card__name">Brown Butter Miso</h3>
-                  <span class="addon-card__tag">June Drop</span>
+              <div class="menu-addon__info">
+                <div class="menu-addon__head">
+                  <h3 class="menu-addon__name" data-i18n="product.drop.name">Brown Butter Miso</h3>
+                  <span class="menu-addon__tag" data-i18n="product.drop.variant">June Drop</span>
                 </div>
-                <p class="addon-card__blurb">This month only. Salted brown-butter dough, white miso, dark chocolate.</p>
+                <p class="menu-addon__blurb" data-i18n="product.drop.blurb">This month only. Salted brown-butter dough, white miso, dark chocolate.</p>
               </div>
-              <div class="addon-card__end">
-                <p class="addon-card__price" data-price-for="drop"></p>
+              <div class="menu-addon__end">
+                <p class="menu-addon__price" data-price-for="drop"></p>
                 <button class="btn btn--gold btn--compact btn--add" type="button" data-add-to-cart="drop">
-                  <span class="btn__label">Add</span>
+                  <span class="btn__label" data-i18n="co.add">Add</span>
                   <span class="btn__added" aria-hidden="true">
                     <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3.5 9.5 7 13l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    Added
+                    <span data-i18n="cart.added">Added</span>
                   </span>
                 </button>
               </div>
             </div>
 
             <!-- Pairing -->
-            <div class="addon-card" id="milk">
-              <div class="img-frame addon-card__img">
+            <div class="menu-addon" id="milk">
+              <div class="img-frame menu-addon__img">
                 <img
                   src="https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=400&q=80"
                   alt="Cold oat milk in a glass bottle"
                   width="84" height="84" loading="lazy" decoding="async">
               </div>
-              <div class="addon-card__info">
-                <div class="addon-card__head">
-                  <h3 class="addon-card__name">Cold Oat Milk</h3>
-                  <span class="addon-card__tag">Pairing</span>
+              <div class="menu-addon__info">
+                <div class="menu-addon__head">
+                  <h3 class="menu-addon__name" data-i18n="product.milk.name">Cold Oat Milk</h3>
+                  <span class="menu-addon__tag" data-i18n="product.milk.variant">Pairing</span>
                 </div>
-                <p class="addon-card__blurb">Ice-cold, in a glass bottle. The only correct partner.</p>
+                <p class="menu-addon__blurb" data-i18n="product.milk.blurb">Ice-cold, in a glass bottle. The only correct partner.</p>
               </div>
-              <div class="addon-card__end">
-                <p class="addon-card__price" data-price-for="milk"></p>
+              <div class="menu-addon__end">
+                <p class="menu-addon__price" data-price-for="milk"></p>
                 <button class="btn btn--gold btn--compact btn--add" type="button" data-add-to-cart="milk">
-                  <span class="btn__label">Add</span>
+                  <span class="btn__label" data-i18n="co.add">Add</span>
                   <span class="btn__added" aria-hidden="true">
                     <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3.5 9.5 7 13l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    Added
+                    <span data-i18n="cart.added">Added</span>
                   </span>
                 </button>
               </div>
@@ -221,34 +230,34 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <p class="footer__wordmark">KUKI</p>
-          <p class="footer__tag">One perfect cookie, delivered warm.</p>
+          <p class="footer__tag" data-i18n="footer.tag">One perfect cookie, delivered warm.</p>
           <div class="footer__social">
-            <a href="#" aria-label="KUKI on Instagram">
+            <a href="#" aria-label="KUKI on Instagram" data-i18n-attr="aria-label:a11y.instagram">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="15" height="15" rx="4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="14.6" cy="5.4" r="1" fill="currentColor"/></svg>
             </a>
-            <a href="#" aria-label="KUKI on TikTok">
+            <a href="#" aria-label="KUKI on TikTok" data-i18n-attr="aria-label:a11y.tiktok">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12.5 2.5v9.75a3.25 3.25 0 1 1-3.25-3.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12.5 4.5c.5 2 2 3.5 4 3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </a>
           </div>
         </div>
         <nav class="footer__col" aria-label="Shop">
-          <h3>Shop</h3>
-          <a href="menu.html">Menu</a>
-          <a href="../order.html">Order Now</a>
+          <h3 data-i18n="footer.shop">Shop</h3>
+          <a href="menu.html" data-i18n="footer.menu">Menu</a>
+          <a href="../order.html" data-i18n="footer.order">Order Now</a>
         </nav>
         <nav class="footer__col" aria-label="Visit">
-          <h3>Visit</h3>
-          <a href="#">Locations</a>
-          <a href="#">Contact</a>
+          <h3 data-i18n="footer.visit">Visit</h3>
+          <a href="#" data-i18n="footer.locations">Locations</a>
+          <a href="#" data-i18n="footer.contact">Contact</a>
         </nav>
         <nav class="footer__col" aria-label="Company">
-          <h3>Company</h3>
-          <a href="../index.html#story">About</a>
-          <a href="../order.html">Order Now</a>
+          <h3 data-i18n="footer.company">Company</h3>
+          <a href="../index.html#story" data-i18n="footer.about">About</a>
+          <a href="../order.html" data-i18n="footer.order">Order Now</a>
         </nav>
       </div>
       <div class="footer__bottom">
-        <p>© 2026 KUKI. Baked with intent.</p>
+        <p data-i18n="footer.copyright">© 2026 KUKI. Baked with intent.</p>
       </div>
     </div>
   </footer>
